@@ -30,6 +30,12 @@ local restock = game:GetService("Workspace").Restocking.Part.ProximityPrompt
 local player = game.Players.LocalPlayer
 local humr = player.Character.HumanoidRootPart
 
+
+local db1 = false
+local db2 = false
+
+
+
 function jobaura()
     if loop then
         spawn(function()
@@ -38,14 +44,17 @@ function jobaura()
                 for i,v in pairs(game:GetService("Workspace").Restocking:GetChildren()) do
                     if v:IsA("Part") and v:FindFirstChild("ProximityPrompt") and player.Backpack:FindFirstChild(v.Name) then
                             local mag = (humr.Position - v.Position).Magnitude
-                            if mag < 10 then
-                                fireproximityprompt(v.ProximityPrompt,1,true)
+                            if mag < 3 then
+                                fireproximityprompt(v.ProximityPrompt,2,true)
+                                repeat wait() until player.Backpack:FindFirstChild(v.Name) == nil
                                 end
-                elseif v.Name == "Part" and v:FindFirstChild("ProximityPrompt") then
+                elseif v.Name == "Part" and v:FindFirstChild("ProximityPrompt") and db2 == false and player.Backpack:FindFirstChild("Grey") == nil and player.Backpack:FindFirstChild("White") == nil and player.Backpack:FindFirstChild("Black") == nil and player.Backpack:FindFirstChild("Green") == nil and player.Backpack:FindFirstChild("Blue") == nil and player.Backpack:FindFirstChild("Purple") == nil and player.Backpack:FindFirstChild("Red") == nil and player.Backpack:FindFirstChild("Pink") == nil and player.Backpack:FindFirstChild("Brown") == nil and player.Backpack:FindFirstChild("Orange") == nil then
                             local mag = (humr.Position - v.Position).Magnitude
-                            if mag < 10 then
+                            if mag < 5 then
+                                db2 = true
                                 fireproximityprompt(v.ProximityPrompt,1,true)
-                                
+                                repeat wait() until player.Backpack:FindFirstChild("Grey") or player.Backpack:FindFirstChild("White") or player.Backpack:FindFirstChild("Black") or player.Backpack:FindFirstChild("Green") or player.Backpack:FindFirstChild("Blue") or player.Backpack:FindFirstChild("Purple") or player.Backpack:FindFirstChild("Red") or player.Backpack:FindFirstChild("Pink") or player.Backpack:FindFirstChild("Brown") or player.Backpack:FindFirstChild("Orange") 
+                                db2 = false
                             end
                             
                     end
