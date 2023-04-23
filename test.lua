@@ -44,7 +44,7 @@ function jobaura()
                 for i,v in pairs(game:GetService("Workspace").Restocking:GetChildren()) do
                     if v:IsA("Part") and v:FindFirstChild("ProximityPrompt") and player.Backpack:FindFirstChild(v.Name) then
                             local mag = (humr.Position - v.Position).Magnitude
-                            if mag < 4 then
+                            if mag < 5 then
                                 fireproximityprompt(v.ProximityPrompt,2,true)
                                 repeat wait() until player.Backpack:FindFirstChild(v.Name) == nil
                                 end
