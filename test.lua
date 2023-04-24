@@ -45,8 +45,8 @@ function jobaura()
                     if v:IsA("Part") and v:FindFirstChild("ProximityPrompt") and player.Backpack:FindFirstChild(v.Name) then
                             local mag = (humr.Position - v.Position).Magnitude
                             if mag < 5 then
-                                fireproximityprompt(v.ProximityPrompt,2,true)
-                                repeat wait() until player.Backpack:FindFirstChild(v.Name) == nil
+                                fireproximityprompt(v.ProximityPrompt,1,true)
+                                repeat wait(.5) fireproximityprompt(v.ProximityPrompt,1,true) until player.Backpack:FindFirstChild(v.Name) == nil
                                 end
                 elseif v.Name == "Part" and v:FindFirstChild("ProximityPrompt") and db2 == false and player.Backpack:FindFirstChild("Grey") == nil and player.Backpack:FindFirstChild("White") == nil and player.Backpack:FindFirstChild("Black") == nil and player.Backpack:FindFirstChild("Green") == nil and player.Backpack:FindFirstChild("Blue") == nil and player.Backpack:FindFirstChild("Purple") == nil and player.Backpack:FindFirstChild("Red") == nil and player.Backpack:FindFirstChild("Pink") == nil and player.Backpack:FindFirstChild("Brown") == nil and player.Backpack:FindFirstChild("Orange") == nil then
                             local mag = (humr.Position - v.Position).Magnitude
@@ -151,6 +151,8 @@ local modtable = {
 }
 
 
+if getgenv().notif == nil then
+getgenv().notif = true
 
 
 for i,v in pairs(game.Players:GetChildren()) do
@@ -194,3 +196,4 @@ game.Players.PlayerRemoving:Connect(function(plr)
 sound:Play()
 end
 end)
+end
