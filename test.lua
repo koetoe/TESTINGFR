@@ -25,7 +25,8 @@ local function fireproximityprompt(Obj, Amount, Skip)
     end
 end
 
-local loop = false
+getgenv().loop = false
+getgenv().PP = false
 local restock = game:GetService("Workspace").Restocking.Part.ProximityPrompt
 local player = game.Players.LocalPlayer
 local humr = player.Character.HumanoidRootPart
@@ -37,7 +38,7 @@ local db2 = false
 
 
 function jobaura()
-    if loop then
+    if getgenv().loop then
         spawn(function()
             repeat wait()
                 
@@ -45,14 +46,14 @@ function jobaura()
                     if v:IsA("Part") and v:FindFirstChild("ProximityPrompt") and player.Backpack:FindFirstChild(v.Name) then
                             local mag = (humr.Position - v.Position).Magnitude
                             if mag < 5 then
-                                fireproximityprompt(v.ProximityPrompt,1,true)
-                                repeat wait(.5) fireproximityprompt(v.ProximityPrompt,1,true) until player.Backpack:FindFirstChild(v.Name) == nil
+                                fireproximityprompt(v.ProximityPrompt,1,getgenv().PP)
+                                repeat wait(.5) fireproximityprompt(v.ProximityPrompt,1,getgenv().PP) until player.Backpack:FindFirstChild(v.Name) == nil
                                 end
                 elseif v.Name == "Part" and v:FindFirstChild("ProximityPrompt") and db2 == false and player.Backpack:FindFirstChild("Grey") == nil and player.Backpack:FindFirstChild("White") == nil and player.Backpack:FindFirstChild("Black") == nil and player.Backpack:FindFirstChild("Green") == nil and player.Backpack:FindFirstChild("Blue") == nil and player.Backpack:FindFirstChild("Purple") == nil and player.Backpack:FindFirstChild("Red") == nil and player.Backpack:FindFirstChild("Pink") == nil and player.Backpack:FindFirstChild("Brown") == nil and player.Backpack:FindFirstChild("Orange") == nil then
                             local mag = (humr.Position - v.Position).Magnitude
                             if mag < 5 then
                                 db2 = true
-                                fireproximityprompt(v.ProximityPrompt,1,true)
+                                fireproximityprompt(v.ProximityPrompt,1,getgenv().PP)
                                 repeat wait() until player.Backpack:FindFirstChild("Grey") or player.Backpack:FindFirstChild("White") or player.Backpack:FindFirstChild("Black") or player.Backpack:FindFirstChild("Green") or player.Backpack:FindFirstChild("Blue") or player.Backpack:FindFirstChild("Purple") or player.Backpack:FindFirstChild("Red") or player.Backpack:FindFirstChild("Pink") or player.Backpack:FindFirstChild("Brown") or player.Backpack:FindFirstChild("Orange") 
                                 db2 = false
                             end
@@ -62,7 +63,7 @@ function jobaura()
                 
                 
                 
-            until loop == false
+            until getgenv().loop == false
             return
             end)
         end
@@ -71,16 +72,23 @@ end
 
 b:DestroyGui()
 
-b:Toggle("Toggle",function(bool)
+b:Toggle("Restock Aura",function(bool)
 if bool then
-    loop = bool
+    getgenv().loop = bool
     jobaura()
     else
-    loop = bool
+    getgenv().loop = bool
     end
 end)
 
+b:Toggle("Instant PP",function(bool)
+if bool then
+    getgenv().PP = bool
 
+    else
+    getgenv().PP = bool
+    end
+end)
 
 local amount = 100
 
