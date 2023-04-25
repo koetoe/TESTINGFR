@@ -54,7 +54,7 @@ function jobaura()
                             if mag < 5 then
                                 db2 = true
                                 fireproximityprompt(v.ProximityPrompt,1,getgenv().PP)
-                                repeat wait() until player.Backpack:FindFirstChild("Grey") or player.Backpack:FindFirstChild("White") or player.Backpack:FindFirstChild("Black") or player.Backpack:FindFirstChild("Green") or player.Backpack:FindFirstChild("Blue") or player.Backpack:FindFirstChild("Purple") or player.Backpack:FindFirstChild("Red") or player.Backpack:FindFirstChild("Pink") or player.Backpack:FindFirstChild("Brown") or player.Backpack:FindFirstChild("Orange") 
+                                repeat wait(.5) fireproximityprompt(v.ProximityPrompt,1,getgenv().PP) until player.Backpack:FindFirstChild("Grey") or player.Backpack:FindFirstChild("White") or player.Backpack:FindFirstChild("Black") or player.Backpack:FindFirstChild("Green") or player.Backpack:FindFirstChild("Blue") or player.Backpack:FindFirstChild("Purple") or player.Backpack:FindFirstChild("Red") or player.Backpack:FindFirstChild("Pink") or player.Backpack:FindFirstChild("Brown") or player.Backpack:FindFirstChild("Orange") 
                                 db2 = false
                             end
                             
